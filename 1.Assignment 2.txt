@@ -1,0 +1,24 @@
+1) Which field of the Customers table is the primary key?
+-> 
+    customer number is the primary key of customer table because it showes uniqueness.
+
+2) What is the 4th column of the Customers table?
+->
+   Rating is the fourth column of customer.
+
+3) What is another word for row? For column?
+->
+   for row = Tuple,Entity and opportunity.
+   for column= attribute and method.
+
+
+4) Why isn’t it possible to see the first five rows of a table?
+->
+  a) When you select a table the order of raws in the output it depends on row address.
+  b) it will always be in ascending order of row address.
+  c) when you update a raw if row length is increasing then the entire row can be moved to another address.
+  d) later when you select from the table we will find the row at some other position in the output.
+  e) Its only in the case of VARCHAR that the row length may be increase or decrease. 
+
+Hence it is not possible to view the first or last 'N' rows of a table.
+  
