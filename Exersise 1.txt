@@ -1,0 +1,156 @@
+1. Create the table SEMP with the following structure:-
+>
+  create table SEMP
+(
+Empno char (4),
+Empname char(20),
+Basic float(9,2),
+Deptno char(2),
+Depthead char(4)
+);
+
+
+2. Create the table SDEPT with the following structure:-
+->
+  create table SDEPT
+(
+Deptno char(2),
+Deptname char(15)
+);
+
+3. Insert into the SDEPT table the following values:-
+->
+  INSERT INTO SDEPT(Deptno,Deptname)
+  values ('10','Development'),
+       ('20','Training');
+
+4. Insert into the SEMP table the following values:-
+->
+  INSERT INTO SEMP (Empno,Empname,Basic,Deptno,Depthead)
+  values ('0001','SUNIL',6000,'10','NULL'),
+       ('0002','HIREN',8000,'20','NULL'),
+       ('0003','ALI',4000,'10','0001'),
+       ('0004','GEORGE',6000,NULL,'0002');
+
+
+->
+create table SUPPLIER
+(
+Sno char (4),
+Sname varchar(20),
+Status char(10),
+City varchar(20)
+);
+
+
+
+insert into SUPPLIER(Sno,Sname,Status,City)
+values ('s1','akshay','25','Pune'),
+       ('s2','babu','20','Mumbai'),
+       ('s3','rohit','10','Satara'),
+       ('s4','shubham','15','Sangli'),
+       ('s5','jayant','30','Kolhapur');
+
+
+       
+create table PARTS
+(
+Pno char(4),
+Pname varchar(20),
+Color char(15),
+Weight int(4),
+City varchar(15)
+);
+
+
+insert into Parts(Pno,Pname,Color,Weight,City)
+values ('p1','bush','white',30,'Gondia'),
+       ('p2','break','black',23,'Nagpur'),
+       ('p3','mirror','red',24,'panvel'),
+       ('p4','engine','red',22,'thane');
+
+
+
+create table PROJECTS
+(
+Jno char(4),
+Jname varchar (20),
+City varchar (15)
+);
+
+
+
+insert into PROJECTS (Jno,Jname,City)
+values ('j1','Noddy','delhi'),
+       ('j2','Nobita','chandigarh'),
+       ('j3','Kiterestu','bengluru');
+
+
+       
+create table SUPPLIER_PARTS_PROJECTS
+(
+Sno char(4),
+Pno char(4),
+Jno char(4),
+QTY int(6)
+);
+
+
+insert into SUPPLIER_PARTS_PROJECTS(Sno,Pno,Jno,QTY)
+values ('s1','p1','j1',400),
+       ('s2','p2','j2',500),
+       ('s3','p3','j3',650);
+
+
+5. Display all the data from the S table.
+->
+   select * from supplier;
+
+6. Display only the S# and SNAME fields from the S table.
+->
+ select Sno,Sname from SUPPLIER;
+
+
+7. Display the PNAME and COLOR from the P table for the CITY=”Nagpur”.
+->
+
+select Pname,Color from PARTS where city='Nagpur';
+
+
+8. Display all the Suppliers from pune.
+->
+select * from SUPPLIER where CITY='pune';
+
+9. Display all the Suppliers from Paris or Athens.
+->
+select * from SUPPLIER where city='paris' or city='athens';
+
+
+10. Display all the Projects in Athens.
+->
+select * from PROJECTS where city = 'Athens';
+
+11. Display all the Partnames with the weight between 12 and 14 (inclusive of both).
+-> 
+  select pname,weight from parts
+  where weight between 12 and 14;
+
+
+12. Display all the Suppliers with a Status greater than or equal to 20.
+->
+  select * from supplier
+where status >=20;
+
+13. Display all the Suppliers except the Suppliers from London.
+->
+  select * from supplier
+    -> where city <>'LONDON';
+
+14. Display only the Cities from where the Suppliers come from.->
+->
+  select city from supplier;
+
+15. Assuming that the Part Weight is in GRAMS, display the same in MILLIGRAMS and KILOGRAMS.
+->
+   select weight * 10000"miligram",weight *1000"kilograms" from parts;
+
