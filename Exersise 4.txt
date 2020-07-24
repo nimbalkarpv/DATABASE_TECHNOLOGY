@@ -1,0 +1,124 @@
+1. Display the minimum Status in the Supplier table.
+->
+mysql> select min(status)from supplier;
++-------------+
+| min(status) |
++-------------+
+| 10          |
++-------------+
+
+
+2. Display the maximum Weight in the Parts table.
+->
+mysql> select max(weight) from parts;
++-------------+
+| max(weight) |
++-------------+
+|          30 |
++-------------+
+
+
+3. Display the average Weight of the Parts.
+->
+mysql> select avg(weight) from parts;
++-------------+
+| avg(weight) |
++-------------+
+|     24.7500 |
++-------------+
+
+4. Display the total Quantity sold for part ‘P1’.
+->
+mysql> select sum(QTY) from SUPPLIER_PARTS_PROJECTS where Pno='p1';
++----------+
+| sum(QTY) |
++----------+
+|      400 |
++----------+
+1 row in set (0.54 sec)
+
+5. Display the total Quantity sold for each part.
+->
+mysql> select Pno,sum(QTY) from SUPPLIER_PARTS_PROJECTS group by Pno;
++------+----------+
+| Pno  | sum(QTY) |
++------+----------+
+| p1   |      400 |
+| p2   |      500 |
+| p3   |      650 |
++------+----------+
+3 rows in set (0.08 sec)
+
+
+6. Display the average Quantity sold for each part.
+->
+mysql> select Pno,avg(QTY) from SUPPLIER_PARTS_PROJECTS group by Pno;
++------+----------+
+| Pno  | avg(QTY) |
++------+----------+
+| p1   | 400.0000 |
+| p2   | 500.0000 |
+| p3   | 650.0000 |
++------+----------+
+3 rows in set (0.11 sec)
+
+7. Display the maximum Quantity sold for each part, provided the maximum Quantity is greater than 800.
+->
+ select Pno,max(QTY) from SUPPLIER_PARTS_PROJECTS where QTY > 800 group by Pno;
+
+
+
+
+
+8. Display the Status and the count of Suppliers with that Status.
+->
+mysql> select Status,count(Status) from SUPPLIER group by Status;
++--------+---------------+
+| Status | count(Status) |
++--------+---------------+
+| 25     |             1 |
+| 20     |             1 |
+| 10     |             1 |
+| 15     |             1 |
+| 30     |             1 |
++--------+---------------+
+5 rows in set (0.18 sec)
+
+
+9. Display the count of Projects going on in different cities.
+->
+
+mysql> select count(Jno),City from PROJECTS group by City;
++------------+------------+
+| count(Jno) | City       |
++------------+------------+
+|          1 | delhi      |
+|          1 | chandigarh |
+|          1 | bengluru   |
++------------+------------+
+3 rows in set (0.21 sec)
+
+
+10. What is the difference between COUNT(Status) and COUNT(*) ?
+->
+
+count(status)-It evaluates the expression for each row in a set and returns the number of rows having a non-null values.
+COUNT(*) :- It counts the number of items in a set.It includes NULL and DUPLICATE values.It returns total number of rows in a table.
+
+
+11. Display the Status and the Count of Suppliers with that Status in the following format as shown below:-
+Status Count
+Ten 1
+Twenty 2
+Thirty 3
+->
+
+select Sname,case
+when status=10 then 'ten'
+when status=20 then 'twenty'
+when status=30 then 'thirty'
+when status=40 then 'forty'
+when status=50 then 'fifty'
+when status=70 then 'seventy'
+else 'others' END status from SUPPLIER;
+
